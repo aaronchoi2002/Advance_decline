@@ -92,7 +92,7 @@ st.markdown("""<hr style="border-top: 2px solid black; border-bottom: 2px solid 
 st.subheader(languages['chart'][selected_language])
 Col1, Col2 = st.columns(2)
 with Col1:
-    trade_day = st.number_input(f"{languages['Trading days covered'][selected_language]}", min_value=1.0, max_value=360.0, value=60.0, step=1.0)
+    trade_day = st.number_input(f"{languages['Trading days covered'][selected_language]}", min_value=1.0, max_value=1000.0, value=60.0, step=1.0)
     # Get last 30 days data
     df_last_days = df_counts.tail(int(trade_day))
 
@@ -105,7 +105,7 @@ with Col2:
 # Create line charts
 st.write(f"Start from: {df_last_days.index[0]}")
 
-df_dow = yf.download("^GSPC", start="2022-01-01")
+df_dow = yf.download("^GSPC", start="2018-01-01")
 df_dow = df_dow.tail(int(trade_day))
 
 #Create subplots
